@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import type { Article } from '@/types/prisma';
 import { marked } from 'marked';
 import { notFound } from 'next/navigation';
+import OptimizedImage from '@/components/OptimizedImage';
 
 const prisma = new PrismaClient();
 
@@ -53,10 +54,13 @@ export default async function Article({ params }: { params: { slug: string } }) 
         </div>
 
         <div className="mt-12">
-          <img
-            className="w-full h-64 object-cover rounded-lg"
+          <OptimizedImage
             src={article.imageUrl}
             alt={article.title}
+            width={1200}
+            height={600}
+            className="w-full h-64 object-cover rounded-lg"
+            priority
           />
         </div>
 
