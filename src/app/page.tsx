@@ -105,7 +105,7 @@ export default function Home() {
               <span className="dot"></span>
               <span className="mono">Insurance · IoT</span>
               <span className="dot"></span>
-              <span className="mono">7 min</span>
+              <span className="mono">10 min</span>
             </div>
             <Link href="/latest-thinking/risk-engineering-iot" className="acard__title-link">
               <h3 className="acard__title">
@@ -125,11 +125,11 @@ export default function Home() {
           </article>
           <article className="acard">
             <div className="acard__meta">
-              <span className="mono">14 Oct 2025</span>
+              <span className="mono">21 Apr 2025</span>
               <span className="dot"></span>
               <span className="mono">Quantum · Computing</span>
               <span className="dot"></span>
-              <span className="mono">9 min</span>
+              <span className="mono">8 min</span>
             </div>
             <Link
               href="/latest-thinking/quantum-computing-finance"
@@ -156,7 +156,7 @@ export default function Home() {
               <span className="dot"></span>
               <span className="mono">Insurance · Innovation</span>
               <span className="dot"></span>
-              <span className="mono">12 min</span>
+              <span className="mono">8 min</span>
             </div>
             <Link
               href="/latest-thinking/reinsurance-pricing-overshoot"
