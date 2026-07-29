@@ -107,7 +107,7 @@ export default function Home() {
               <span className="dot"></span>
               <span className="mono">7 min</span>
             </div>
-            <Link href="/latest-thinking/risk-engineering" className="acard__title-link">
+            <Link href="/latest-thinking/risk-engineering-iot" className="acard__title-link">
               <h3 className="acard__title">
                 The role of risk engineering and IoT{' '}
                 <em>in modern insurance underwriting.</em>
@@ -132,7 +132,7 @@ export default function Home() {
               <span className="mono">9 min</span>
             </div>
             <Link
-              href="/latest-thinking/quantum-computing"
+              href="/latest-thinking/quantum-computing-finance"
               className="acard__title-link"
             >
               <h3 className="acard__title">
@@ -159,7 +159,7 @@ export default function Home() {
               <span className="mono">12 min</span>
             </div>
             <Link
-              href="/latest-thinking/insurance-innovation"
+              href="/latest-thinking/reinsurance-pricing-overshoot"
               className="acard__title-link"
             >
               <h3 className="acard__title">

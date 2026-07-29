@@ -1,33 +1,19 @@
-import { PrismaClient } from '@prisma/client';
-import type { Article } from '@/types/prisma';
 import { marked } from 'marked';
 import { notFound } from 'next/navigation';
 import OptimizedImage from '@/components/OptimizedImage';
+import { articles } from '@/data/articles';
 
-const prisma = new PrismaClient();
-
-export async function generateStaticParams() {
-  // No DATABASE_URL is configured in CI, so prerendering the slug list is
-  // best-effort: without a reachable database we emit no static paths and
-  // every article is rendered on demand instead of failing the build.
-  try {
-    const articles = await prisma.article.findMany({
-      where: { published: true },
-      select: { slug: true },
-    });
-
-    return articles.map((article: { slug: string }) => ({
-      slug: article.slug,
-    }));
-  } catch {
-    return [];
-  }
+export function generateStaticParams() {
+  return articles.map((article) => ({ slug: article.slug }));
 }
 
-export default async function Article({ params }: { params: { slug: string } }) {
-  const article = await prisma.article.findUnique({
-    where: { slug: params.slug },
-  }) as Article | null;
+export default async function ArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const article = articles.find((entry) => entry.slug === slug);
 
   if (!article) {
     notFound();
@@ -48,15 +34,11 @@ export default async function Article({ params }: { params: { slug: string } }) 
             {article.title}
           </h1>
           <div className="mt-4 flex items-center justify-center text-gray-500 text-sm">
-            <time dateTime={article.date.toISOString()}>
-              {new Date(article.date).toLocaleDateString('en-US', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric',
-              })}
+            <time dateTime={new Date(article.date).toISOString()}>
+              {article.date}
             </time>
             <span className="mx-1">·</span>
-            <span>{article.readTime} read</span>
+            <span>{article.readTime}</span>
           </div>
         </div>
 
@@ -71,7 +53,7 @@ export default async function Article({ params }: { params: { slug: string } }) 
           />
         </div>
 
-        <div 
+        <div
           className="mt-12 prose prose-indigo mx-auto"
           dangerouslySetInnerHTML={{ __html: content }}
         />

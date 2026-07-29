@@ -35,7 +35,7 @@ export default function LatestThinking() {
                       {article.title}
                     </h2>
                     <p className="text-base text-gray-600 flex-grow">
-                      {article.content.substring(0, 150)}...
+                      {article.excerpt}
                     </p>
                     <p className="mt-4 text-sm text-orange-500 group-hover:underline inline-flex items-center">
                       Read more <span className="ml-1">→</span>

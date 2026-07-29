@@ -27,11 +27,11 @@ export default function Footer() {
             <h5>Read</h5>
             <Link href="/latest-thinking">Latest thinking</Link>
             <br />
-            <Link href="/latest-thinking/quantum-computing">Quantum computing</Link>
+            <Link href="/latest-thinking/quantum-computing-finance">Quantum computing</Link>
             <br />
-            <Link href="/latest-thinking/risk-engineering">Risk engineering & IoT</Link>
+            <Link href="/latest-thinking/risk-engineering-iot">Risk engineering & IoT</Link>
             <br />
-            <Link href="/latest-thinking/insurance-innovation">Insurance innovation</Link>
+            <Link href="/latest-thinking/reinsurance-pricing-overshoot">Insurance innovation</Link>
           </div>
           <div>
             <h5>Practice</h5>
