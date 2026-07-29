@@ -7,14 +7,21 @@ import OptimizedImage from '@/components/OptimizedImage';
 const prisma = new PrismaClient();
 
 export async function generateStaticParams() {
-  const articles = await prisma.article.findMany({
-    where: { published: true },
-    select: { slug: true },
-  });
+  // No DATABASE_URL is configured in CI, so prerendering the slug list is
+  // best-effort: without a reachable database we emit no static paths and
+  // every article is rendered on demand instead of failing the build.
+  try {
+    const articles = await prisma.article.findMany({
+      where: { published: true },
+      select: { slug: true },
+    });
 
-  return articles.map((article: { slug: string }) => ({
-    slug: article.slug,
-  }));
+    return articles.map((article: { slug: string }) => ({
+      slug: article.slug,
+    }));
+  } catch {
+    return [];
+  }
 }
 
 export default async function Article({ params }: { params: { slug: string } }) {

@@ -14,9 +14,6 @@ export default function TestImage() {
             style={{
               objectFit: 'cover',
             }}
-            onError={(e) => {
-              console.error('Image failed to load:', e);
-            }}
           />
         </div>
       </div>

@@ -3,8 +3,10 @@
   publish = ".next"
 
 [build.environment]
-  NEXT_USE_NETLIFY_EDGE = "true"
-  NEXT_PRIVATE_TARGET = "server"
+  NODE_VERSION = "22"
+  # next-auth@4.24.11 peer-requires next <=15; repo is on next 16. Remove once
+  # next-auth is upgraded to 4.24.15, which declares ^16 support.
+  NPM_FLAGS = "--legacy-peer-deps"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
